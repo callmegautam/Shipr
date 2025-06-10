@@ -12,10 +12,9 @@ app.use(express.urlencoded({ extended: true }));
 const BASE_PATH = process.env.BASE_PATH as string;
 const proxy = httpProxy.createProxy();
 
-// Rewrite request URL before proxying
 app.use((req, res, next) => {
-    const hostname = req.hostname; // e.g., gautam.localhost
-    const subdomain = hostname.split(".")[0]; // gautam
+    const hostname = req.hostname;
+    const subdomain = hostname.split(".")[0];
     const originalUrl = req.url;
 
     if (originalUrl === "/" || originalUrl === "/index.html") {
@@ -28,7 +27,6 @@ app.use((req, res, next) => {
     next();
 });
 
-// Proxy the request to S3 bucket
 app.use((req, res) => {
     proxy.web(req, res, {
         target: BASE_PATH,
