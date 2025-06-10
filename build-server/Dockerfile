@@ -11,12 +11,12 @@ RUN apt-get install git -y
 WORKDIR /home/app
 
 COPY main.sh main.sh
-COPY index.js index.js
+COPY index.ts index.ts 
 COPY package*.json .
 
 RUN npm install
 
 RUN chmod +x main.sh
-RUN chmod +x index.js
+RUN chmod +x index.ts
 
 ENTRYPOINT [ "/home/app/main.sh" ]
