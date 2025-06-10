@@ -14,4 +14,4 @@ echo "Building project..."
 npm run build
 
 echo "Starting application..."
-exec npm start  
+exec npm run start

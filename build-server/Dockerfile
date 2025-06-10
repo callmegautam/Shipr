@@ -10,9 +10,7 @@ RUN apt-get install git -y
 
 WORKDIR /home/app
 
-COPY main.sh main.sh
-COPY index.ts index.ts 
-COPY package*.json .
+COPY . .
 
 RUN npm install
 

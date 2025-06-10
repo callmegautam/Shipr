@@ -3,29 +3,39 @@ import cors from "cors";
 import httpProxy from "http-proxy";
 
 const app = express();
+const PORT = 8000;
 
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const PORT = 8000;
 const BASE_PATH = process.env.BASE_PATH as string;
 const proxy = httpProxy.createProxy();
 
-app.use((req, res) => {
-    const hostname = req.hostname;
-    const subDomain = hostname.split(".")[0];
-    const resolveTo = `${BASE_PATH}/${subDomain}`;
-    proxy.web(req, res, { target: resolveTo, changeOrigin: true });
+// Rewrite request URL before proxying
+app.use((req, res, next) => {
+    const hostname = req.hostname; // e.g., gautam.localhost
+    const subdomain = hostname.split(".")[0]; // gautam
+    const originalUrl = req.url;
+
+    if (originalUrl === "/" || originalUrl === "/index.html") {
+        req.url = `/__outputs/${subdomain}/index.html`;
+    } else {
+        req.url = `/__outputs/${subdomain}${originalUrl}`;
+    }
+
+    console.log(`[REWRITE] ${hostname} ${originalUrl} → ${req.url}`);
+    next();
 });
 
-proxy.on("proxyReq", (proxyReq, req, res) => {
-    const url = req.url;
-    if (url === "/") {
-        proxyReq.path = "/index.html";
-    }
+// Proxy the request to S3 bucket
+app.use((req, res) => {
+    proxy.web(req, res, {
+        target: BASE_PATH,
+        changeOrigin: true,
+    });
 });
 
 app.listen(PORT, () => {
-    console.log(`Reverse Proxy listening on port ${PORT}`);
+    console.log(`✅ Proxy running at http://localhost:${PORT}`);
 });

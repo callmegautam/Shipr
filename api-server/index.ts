@@ -61,8 +61,8 @@ app.post("/project", async (req, res) => {
             networkConfiguration: {
                 awsvpcConfiguration: {
                     assignPublicIp: "ENABLED",
-                    subnets: ["subnet-0f0c0a0b0d0e0f00"],
-                    securityGroups: ["sg-0f0c0a0b0d0e0f00"],
+                    subnets: ["subnet-08e1b40d627017d2b", "subnet-027fd6f6f67d16c3c", "subnet-0cd5651e3a5e4622c"],
+                    securityGroups: ["sg-0cc4b334fa63d0abf"],
                 },
             },
             overrides: {
