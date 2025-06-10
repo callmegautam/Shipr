@@ -37,8 +37,8 @@ const ecsClient = new ECSClient({
 });
 
 const config = {
-    CLUSTER: "",
-    TASK: "",
+    CLUSTER: process.env.CLUSTER_ARN as string,
+    TASK: process.env.TASK_ARN as string,
 };
 
 //@ts-ignore
