@@ -60,7 +60,7 @@ const init = async () => {
             publishLog(`Uploading ${file}`);
 
             const command = new PutObjectCommand({
-                Bucket: "shipr-build-server",
+                Bucket: "shipr-outputs",
                 Key: `__output/${PROJECT_ID}/${file}`,
                 Body: fs.createReadStream(filePath),
                 ContentType: mime.lookup(file) || "application/octet-stream",
