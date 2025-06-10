@@ -8,7 +8,7 @@ import mime from "mime-types";
 const publisher = new Redis(process.env.REDIS_URL as string);
 
 const s3Client = new S3Client({
-    region: "ap-south-1",
+    region: "ap-southeast-1",
     credentials: {
         accessKeyId: process.env.AWS_S3_ACCESS_KEY_ID as string,
         secretAccessKey: process.env.AWS_S3_SECRET_ACCESS_KEY as string,
@@ -61,7 +61,7 @@ const init = async () => {
 
             const command = new PutObjectCommand({
                 Bucket: "shipr-outputs",
-                Key: `__output/${PROJECT_ID}/${file}`,
+                Key: `__outputs/${PROJECT_ID}/${file}`,
                 Body: fs.createReadStream(filePath),
                 ContentType: mime.lookup(file) || "application/octet-stream",
             });
