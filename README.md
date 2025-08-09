@@ -1,6 +1,6 @@
 # Shipr — Deploy Frontend Projects to Your Own Subdomain
 
-[![Build](https://img.shields.io/github/actions/workflow/status/yourusername/shipr/ci.yml?label=build&logo=github)](https://github.com/callmegautam/shipr/actions)
+[![Build](https://img.shields.io/github/actions/workflow/status/callmegautam/shipr/ci.yml?label=build&logo=github)](https://github.com/callmegautam/shipr/actions)
 [![License](https://img.shields.io/github/license/callmegautam/shipr)](LICENSE)
 [![Issues](https://img.shields.io/github/issues/callmegautam/shipr)](https://github.com/yourusername/shipr/issues)
 
