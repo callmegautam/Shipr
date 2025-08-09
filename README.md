@@ -25,7 +25,7 @@ Think of it as your own mini Vercel or Netlify, but fully in your control.
 ```
 
 ┌──────────────┐      ┌───────────────┐      ┌─────────────┐
-│ API Server   │ ───▶ │ Build Server  │ ───▶ │ Artifact    │
+│ API Server   │ ───> │ Build Server  │ ───> │ Artifact    │
 │ (Control)    │      │ (Worker)      │      │ Storage     │
 └──────┬───────┘      └──────┬────────┘      └─────┬───────┘
        │                     │                     │
