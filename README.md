@@ -20,7 +20,7 @@ Think of it as your own mini Vercel or Netlify, but fully in your control.
 
 ---
 
-## 🏗 Architecture
+## Architecture
 
 ```
 
